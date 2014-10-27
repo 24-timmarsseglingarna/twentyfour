@@ -45,10 +45,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       rbenv: {
         user_installs: [{
           user: 'vagrant',
-          rubies: ["1.9.3-p0"],
-          global: "1.9.3-p0",
+          rubies: ["2.1.2"],
+          global: "2.1.2",
           gems: {
-            "1.9.3-p0" => [
+            "2.1.2" => [
               { name: "bundler" }
             ]
           }
