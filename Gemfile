@@ -37,3 +37,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+gem 'haml-rails'
+
+gem 'formtastic'
+
+gem 'railties' #, '~> 4.1.6'
