@@ -15,3 +15,7 @@
  *= require formtastic
  */
 
+.bread-crumb {
+  background-color: lightgray;
+  padding: 0.5em;
+}

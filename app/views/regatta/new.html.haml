@@ -1,0 +1,8 @@
+%h1 Ny regatta
+
+= render 'form'
+
+- if :organizer_id.blank?
+  = link_to 'Lista alla regattor', regatta_path
+- else
+  = link_to "Tillbaka", :back

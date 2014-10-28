@@ -1,0 +1,9 @@
+.bread-crumb
+  > Arrangörer
+
+%ul
+  - @organizers.each do |organizer|
+    %li
+      %td= link_to organizer.name, organizer
+
+= link_to 'Lägg till en arrangör', new_organizer_path

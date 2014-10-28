@@ -1,0 +1,14 @@
+= semantic_form_for @race do |f|
+  = f.inputs do
+    = f.input :period, :collection => ["12", "24", "48", "72", "96", "120"], :as => :radio
+    = f.input :start_from #, :as => :datetime_picker
+    = f.input :start_to
+    = f.input :regattum_id, :as => :hidden
+    
+    - if @race.regattum.blank?
+      = f.input :regattum
+    - else
+      = f.input :regattum, :input_html => { :disabled => true }
+
+  = f.actions do
+    = f.action :submit, :as => :input

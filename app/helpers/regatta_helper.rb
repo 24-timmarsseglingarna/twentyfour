@@ -1,0 +1,2 @@
+module RegattaHelper
+end

@@ -11,9 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141028090043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "organizers", force: true do |t|
+    t.string   "name"
+    t.string   "contact_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "points", force: true do |t|
+    t.string   "number"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "races", force: true do |t|
+    t.integer  "period"
+    t.datetime "start_from"
+    t.datetime "start_to"
+    t.integer  "regattum_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "regatta", force: true do |t|
+    t.string   "name"
+    t.integer  "organizer_id"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

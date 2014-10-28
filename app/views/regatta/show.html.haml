@@ -1,0 +1,29 @@
+%p#notice= notice
+
+.bread-crumb
+  > 
+  = link_to "Arrangörer", organizers_path
+  >
+  = link_to @regattum.organizer.name, @regattum.organizer
+  >
+  = @regattum.name
+
+
+- unless @regattum.description.blank?
+  %p
+    = @regattum.description
+
+%p
+  Seglingar:
+  %ul
+    - for race in @races
+      %li
+        = link_to "#{race.period} timmar, #{race.description}", race
+        
+  %p
+    = link_to "Lägg till en segling", new_race_path(:regattum_id => @regattum.id)      
+
+%p
+  = link_to "Redigera regattan #{@regattum.name}", edit_regattum_path(@regattum)
+%p
+  = link_to "Radera regattan #{@regattum.name}", @regattum, :method => :delete, :data => { :confirm => "Vill du verkligen radera #{@regattum.name} (inklusive seglingar och anmälningar)?" }

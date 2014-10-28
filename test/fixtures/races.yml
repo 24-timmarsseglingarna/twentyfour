@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  period: 1
+  start_from: 2014-10-28 09:00:44
+  start_to: 2014-10-28 09:00:44
+  regattum_id: 1
+
+two:
+  period: 1
+  start_from: 2014-10-28 09:00:44
+  start_to: 2014-10-28 09:00:44
+  regattum_id: 1

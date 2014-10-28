@@ -1,0 +1,27 @@
+%p#notice= notice
+
+.bread-crumb
+  > 
+  = link_to "Arrangörer", organizers_path
+  >  
+  = @organizer.name
+
+- unless @organizer.contact_name.blank?
+  %p
+    Kontaktperson:
+    = @organizer.contact_name
+  
+- unless @regatta.blank?    
+  %p
+    Inplanerade regattor:
+    %ol
+    - for regattum in @regatta
+      %li 
+        = link_to regattum.name, regattum 
+%p
+  = link_to "Lägg till en regatta", new_regattum_path(:organizer_id => @organizer.id) 
+
+%p
+  = link_to "Redigera arrangören #{@organizer.name}", edit_organizer_path(@organizer)
+%p
+  = link_to "Radera arrangören #{@organizer.name}", @organizer, :method => :delete, :data => { :confirm => "Vill du verkligen radera #{@organizer.name} från systemet inklusive dess regattor, seglingar och anmälningar?" }

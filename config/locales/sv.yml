@@ -1,0 +1,113 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+sv:
+  hello: "Hej värld"
+  time:
+    formats:
+      default: "%Y-%m-%d %H.%M"                 # 2011-05-27 13.25
+      month_and_year: "%B %Y"
+      day_of_week: "%A"
+      abbr_day_of_week: "%a"
+      date: "%Y-%m-%d"                          # 2011-05-24
+      day_of_month: "%e"
+      clock: "Kl. %H.%M"                        # Kl. 13.45
+      machine: "%Y-%m-%dT%H:%M:00%z"
+      short: "%A %e %b %H.%M"                      # 3 dec 13.25
+      shorty: "%e %b"                           # 3 dec 
+      long: "%e %B %Y %H.%M"                    # 3 december 2011 13.25
+      longest: "%A %e %B %Y klockan %H.%M"      # tisdag 3 december 2011 klockan 13.25 
+      time: "%H.%M"                             # 13.45
+      mini: "%e %B %Y"                          # 3 december 2011
+      day: "%e %b"                              #
+      abbr_month_of_year: "%b"
+      icalendar: "%Y%m%dT%H%M00"
+      month_of_year: "%m"
+      day_of_month: "%e"
+    am: ""
+    pm: ""
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%e %b"
+      long: "%e %B %Y"
+
+    day_names: [söndag, måndag, tisdag, onsdag, torsdag, fredag, lördag]
+    abbr_day_names: [sön, mån, tis, ons, tor, fre, lör]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, januari, februari, mars, april, maj, juni, juli, augusti, september, oktober, november, december]
+    abbr_month_names: [~, jan, feb, mars, april, maj, juni, juli, aug, sep, okt, nov, dec]
+  activerecord:
+    models:
+      organizer: "Arrangör"
+      regattum: "Regatta"
+      race: "Segling"
+      point: "Punkt"
+    errors:
+      models:
+        organizer:
+          attributes:
+            name:
+              taken: "En med det namnet finns redan."
+
+  formtastic:
+    titles:
+      post_details: "Post details"
+    labels:
+      organizer:
+        name: "Namn"
+        contact_name: "Kontaktperson"
+      regattum:
+        name: "Namn"
+        organizer: "Arrangör"
+        description: "Beskrivning"
+      race:
+        period: "Seglingsperiod"
+        start_from: "Starta från"
+        start_to: "Starta till"
+        regattum: "Regatta"
+      post:
+        edit:
+          title: "Edit title"
+    hints:
+      post:
+        title: "Choose a good title for your post."
+        body: "Write something inspiring here."
+    placeholders:
+      organizer:
+        name: "Svenska Kryssarklubbens Blekingekrets"
+
+    actions:
+      create: "Skapa %{model}"
+      update: "Spara ändringar"
+      reset: "Nollställ formuläret"
+      cancel: "Avbryt och backa tillbaka"
+      
+      
+# sv.activerecord.errors.models.regattum.attributes.name.blank      
+# sv.activerecord.errors.models.race.attributes.period.inclusion
+# sv.activerecord.errors.models.race.attributes.start_from.blank
+# sv.activerecord.errors.models.race.attributes.start_to.blank
+# sv.activerecord.errors.models.race.attributes.regattum.blank
