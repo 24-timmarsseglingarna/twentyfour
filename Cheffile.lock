@@ -4,6 +4,7 @@ SITE
     apt (2.6.0)
     build-essential (2.1.2)
     chef-sugar (2.4.1)
+    chef_gem (0.1.0)
     heroku-toolbelt (0.1.0)
     openssl (2.0.0)
       chef-sugar (>= 0.0.0)
@@ -18,11 +19,12 @@ SITE
       yum (~> 3.0)
 
 GIT
-  remote: https://github.com/fnichol/chef-rbenv
+  remote: https://github.com/fnichol/chef-rvm
   ref: master
-  sha: 0a3018634bafe58ad21c6ee271af015220e444b9
+  sha: 8a877e9b497f8fb06dfe6f5975561331b3924243
   specs:
-    rbenv (0.7.3)
+    rvm (0.10.1)
+      chef_gem (>= 0.0.0)
 
 GIT
   remote: https://github.com/mdxp/nodejs-cookbook
@@ -40,7 +42,7 @@ DEPENDENCIES
   heroku-toolbelt (~> 0.1.0)
   nodejs (>= 0)
   postgresql (~> 3.4.10)
-  rbenv (>= 0)
   ruby_build (>= 0)
+  rvm (>= 0)
   vim (>= 0)
 
