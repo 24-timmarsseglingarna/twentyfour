@@ -1,6 +1,6 @@
 class Race < ActiveRecord::Base
   belongs_to :regattum, dependent: :destroy
-  validates :period, inclusion: { in: [12, 24, 48, 72, 96, 120] }
+  validates :period, inclusion: { in: [12, 24, 48, 72, 96, 120] } # TODO move into configuration
   validates :start_from, presence: true # TODO validate reasonable
   validates :start_to, presence: true #TODO validate on or after start_from
   validates :regattum, presence: true
