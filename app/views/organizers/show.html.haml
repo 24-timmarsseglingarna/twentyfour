@@ -10,6 +10,12 @@
   %p
     Kontaktperson:
     = @organizer.contact_name
+
+- unless @organizer.fk_org_code.blank?
+  %p
+    Arrangörskod i P&D-databasen (används som foreign key):
+    = @organizer.fk_org_code
+  
   
 - unless @regatta.blank?    
   %p

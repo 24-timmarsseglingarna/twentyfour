@@ -43,3 +43,5 @@ gem 'haml-rails'
 gem 'formtastic'
 
 gem 'railties' #, '~> 4.1.6'
+
+gem 'nokogiri'

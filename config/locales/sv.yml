@@ -79,6 +79,7 @@ sv:
       organizer:
         name: "Namn"
         contact_name: "Kontaktperson"
+        fk_org_code: "Arrangörskod"
       regattum:
         name: "Namn"
         organizer: "Arrangör"
@@ -92,6 +93,8 @@ sv:
         edit:
           title: "Edit title"
     hints:
+      organizer:
+        fk_org_code: "Används som foreign key i API-anrop mot P&D-databasen. Se till att samma används i båda systemen."
       post:
         title: "Choose a good title for your post."
         body: "Write something inspiring here."
@@ -110,3 +113,6 @@ sv:
 # sv.activerecord.errors.models.race.attributes.start_from.blank
 # sv.activerecord.errors.models.race.attributes.start_to.blank
 # sv.activerecord.errors.models.race.attributes.regattum.blank
+
+#sv.activerecord.errors.models.point.attributes.number.greater_than
+#sv.activerecord.errors.models.point.attributes.number.not_a_number

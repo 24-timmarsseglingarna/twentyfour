@@ -1,12 +1,26 @@
 %p#notice= notice
 
 %p
-  %b Number:
+  %b Nummer:
   = @point.number
 %p
-  %b Name:
+  %b Namn:
   = @point.name
-
+%p
+  %b Definition:
+  = @point.definition
+%p
+  %b Latitude:
+  = @point.lat
+  %br
+  = @point.lat_d
+%p
+  %b Longitude:
+  = @point.long
+  %br
+  = @point.long_d
+ 
+  
 = link_to 'Edit', edit_point_path(@point)
 \|
 = link_to 'Back', points_path

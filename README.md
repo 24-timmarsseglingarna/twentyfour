@@ -3,29 +3,21 @@ twentyfour
 
 Ett enkelt anmälningsformulär till 24-timmarsseglingarna.
 
+* Konfiguration och populering
+rake db:create
+rake db:migrate
+rake import:points # Alla punkter (med nummer) från P&D-databasen.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* API
+**PoD
+* Utvecklingsmiljö
+vagrant
+librarian-chef
+ruby
+git
+* Produktionsmiljö
+* Bidra
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
 Please feel free to use a different markup language if you do not plan to run

@@ -4,6 +4,8 @@
   %tr
     %th Number
     %th Name
+    %th First seen here
+    %th Last changed here
     %th
     %th
     %th
@@ -12,6 +14,8 @@
     %tr
       %td= point.number
       %td= point.name
+      %td= point.created_at
+      %td= point.updated_at
       %td= link_to 'Show', point
       %td= link_to 'Edit', edit_point_path(point)
       %td= link_to 'Destroy', point, :method => :delete, :data => { :confirm => 'Are you sure?' }
