@@ -8,7 +8,7 @@ include ERB::Util
 namespace :import do
   desc "Initial import of points from P&D database."
   task :points => :environment do 
-    doc = Nokogiri::XML(open("http://dev.24-timmars.nu/PoD/api/xmlapi2.php?points"))
+    doc = Nokogiri::XML(open("http://dev.24-timmars.nu/PoD/api/xmlapi2.php?points"), nil, 'ISO-8859-1')
     # TODO set character encoding
     doc.xpath("//punkter//punkt//nummer").each do |number|
       p = Point.find_or_create_by(number: number.content.to_s.strip)
@@ -29,6 +29,24 @@ namespace :populate do
       point.save!
     end
   end
+  
+  task :start_points => :environment do
+    Organizer.all.each do |organizer|
+      puts organizer.name
+      unless organizer.fk_org_code.blank?
+        doc = Nokogiri.XML(open("http://dev.24-timmars.nu/PoD/xmlapi.php?krets=#{url_encode(organizer.fk_org_code.strip)}"), nil, 'ISO-8859-1')
+        doc.xpath("//startpunkter//startpunkt//nummer").each do |number|
+          point = Point.find_by_number number.content.strip
+          unless organizer.points.include? point
+            organizer.points << point
+          else
+            puts point.name
+          end
+        end
+      end
+    end
+  end  
+  
 end
 
 

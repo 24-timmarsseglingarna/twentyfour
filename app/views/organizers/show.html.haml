@@ -15,15 +15,22 @@
   %p
     Arrangörskod i P&D-databasen (används som foreign key):
     = @organizer.fk_org_code
-  
-  
+
+- unless @organizer.points.blank?
+  %p
+    Startpunkter:
+  %ul
+    - for start_point in @organizer.points.order('number ASC')
+      %li
+        = link_to "#{start_point.number} #{start_point.name}", start_point
+    
 - unless @regatta.blank?    
   %p
     Inplanerade regattor:
-    %ol
-    - for regattum in @regatta
-      %li 
-        = link_to regattum.name, regattum 
+    %ul
+      - for regattum in @regatta
+        %li 
+          = link_to regattum.name, regattum 
 %p
   = link_to "Lägg till en regatta", new_regattum_path(:organizer_id => @organizer.id) 
 

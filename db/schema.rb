@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029113854) do
+ActiveRecord::Schema.define(version: 20141029121426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20141029113854) do
     t.datetime "updated_at"
     t.string   "fk_org_code"
   end
+
+  create_table "organizers_points", force: true do |t|
+    t.integer  "organizer_id"
+    t.integer  "point_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "organizers_points", ["organizer_id", "point_id"], name: "index_organizers_points_on_organizer_id_and_point_id", unique: true, using: :btree
 
   create_table "points", force: true do |t|
     t.string   "number"
