@@ -16,6 +16,8 @@ class RacesController < ApplicationController
   def new
     @race = Race.new
     @race.regattum_id = params[:regattum_id] unless params[:regattum_id].blank? 
+    @race.start_from = DateTime.now.to_date + 12.hours
+    @race.start_to = DateTime.now.to_date + 12.hours + 30.minutes
   end
 
   # GET /races/1/edit

@@ -1,20 +1,18 @@
-%h1 Listing regatta
+%p#notice= notice
+
+%h1 Alla regattor
 
 %table
   %tr
-    %th Name
-    %th Organizer
-    %th Description
-    %th
+    %th Namn
+    %th Arrangör
     %th
     %th
 
   - @regatta.each do |regattum|
     %tr
       %td= link_to regattum.name, regattum
-      %td= regattum.organizer.name
-      %td= regattum.description
-      %td= link_to 'Show', regattum
+      %td= regattum.organizer.name unless regattum.organizer.blank?
       %td= link_to 'Edit', edit_regattum_path(regattum)
       %td= link_to 'Destroy', regattum, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

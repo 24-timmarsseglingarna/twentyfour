@@ -97,7 +97,6 @@ sv:
         body: "Write something inspiring here."
     placeholders:
       organizer:
-        name: "Svenska Kryssarklubbens Blekingekrets"
 
     actions:
       create: "Skapa %{model}"
