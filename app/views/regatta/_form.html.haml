@@ -7,6 +7,7 @@
     - else
       = f.input :organizer, :input_html => { :disabled => true }
     = f.input :description
-
+    = f.input :common_goal, :selection => Hash[Point.all.order('number ASC').map{|b| ["#{b.number} #{b.name}",b.id]}]     
+    = f.input :common_goal_only
   = f.actions do
     = f.action :submit, :as => :input

@@ -14,6 +14,18 @@
     = @regattum.description
 
 %p
+  Målgång:
+  - if @regattum.common_goal.blank?
+    vid startplatsen.
+  - else
+    = @regattum.common_goal.number
+    = @regattum.common_goal.name
+    - if @regattum.common_goal_only
+      (endast).
+    - else
+      eller vid startplatsen.
+
+%p
   Seglingar:
   %ul
     - for race in @races

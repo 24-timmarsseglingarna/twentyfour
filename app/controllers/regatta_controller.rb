@@ -75,6 +75,6 @@ class RegattaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def regattum_params
-      params.require(:regattum).permit(:name, :organizer_id, :description)
+      params.require(:regattum).permit(:name, :organizer_id, :description, :common_goal_id, :common_goal_only)
     end
 end

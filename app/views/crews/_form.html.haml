@@ -1,6 +1,17 @@
+- @aa = Hash[Point.organizer_selection(3).map{|b| ["#{b.number} #{b.name}",b.id]}]
 = semantic_form_for @crew do |f|
   = f.inputs do
-    = f.input :boat
-    = f.input :race, :as => :radio
+    - if params[:section] == "boat" || params[:section].blank?
+      = f.input :boat
+    - if params[:section] == "race" || params[:section].blank?      
+      = f.input :race, :as => :radio
+    - if params[:section] == "start" || params[:section].blank?
+      = #f.input :point, :collection => Point.order("number ASC").first(10)
+      
+      = #f.input :point, :collection => Hash[Point.all.first(10).map{|b| ["#{b.number} #{b.name}",b.id]}]
+
+      = f.input :point, :collection => @aa #Hash[Point.organizer_selection(3).map{|b| ["#{b.number} #{b.name}",b.id]}]
+    - if params[:section] == "goal" || params[:section].blank?  
+      = f.input :common_goal
   = f.actions do
     = f.action :submit, :as => :input
