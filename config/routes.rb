@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :crews
+
+  resources :boats
+
   resources :people
 
   resources :races

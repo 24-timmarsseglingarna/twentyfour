@@ -17,6 +17,13 @@
   Start:
   = @race.description
 
+- unless @race.crews.blank?  
+  %p
+    Anmälda besättningar:
+    %ul
+      - for crew in @race.crews do
+        %li= link_to crew.boat.name, crew
+
 %p
   = link_to "Redigera seglingen #{@race.name}", edit_race_path(@race)
 %p

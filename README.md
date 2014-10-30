@@ -19,6 +19,21 @@ git
 * Bidra
 
 
+Vem är du?
+Ska du delta?
+Vilken båt?
+Har båten handikapp?
+Vilka ombord?
+Vem skeppare (ok byta inom besättningen)
+Har betalt?
+Vilken segling (ok byta inom regattan)?
+
+Utkast -> preliminär -> betald -> låst
+-> inställd
+-> avbruten
+-> genomförd
+  
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

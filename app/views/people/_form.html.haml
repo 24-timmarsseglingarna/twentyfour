@@ -2,9 +2,9 @@
   = f.inputs do
     = f.input :first_name
     = f.input :last_name
-    = f.input :birthday
-    = f.input :email
-    = f.input :mobile
+    = f.input :birthday, :as => :date_select, :start_year => Date.today.year - 115, :end_year => Date.today.year
+    = f.input :email, :as => :email
+    = f.input :mobile, :as => :phone
 
   = f.actions do
     = f.action :submit, :as => :input

@@ -1,0 +1,17 @@
+%h1 Listing crews
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @crews.each do |crew|
+    %tr
+      %td= link_to 'Show', crew
+      %td= link_to 'Edit', edit_crew_path(crew)
+      %td= link_to 'Destroy', crew, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Crew', new_crew_path

@@ -24,3 +24,26 @@
   margin-left: 25%;
   margin-top: 4em;
 }
+
+.change {
+  text-align: right;
+}
+.application-doc {
+  margin: 1em;
+  width: 320px;
+  border-radius: 0.5em;
+  border-color: #ccc;
+  border-width: 2px;  
+  border-radius: 0.5em;
+  border-style: solid;
+}
+.application-section {
+  padding: 1em;
+  margin: 1em;
+  border-radius: 0.5em;
+  background-color: #ccc;
+}
+
+#application-race {
+  background-color: #ffc;
+}
