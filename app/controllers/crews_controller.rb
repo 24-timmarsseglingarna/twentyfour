@@ -31,7 +31,7 @@ class CrewsController < ApplicationController
 
     respond_to do |format|
       if @crew.save
-        format.html { redirect_to @crew, notice: 'Crew was successfully created.' }
+        format.html { redirect_to @crew, notice: 'Anmälan påbörjad.' }
         format.json { render :show, status: :created, location: @crew }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class CrewsController < ApplicationController
   def update
     respond_to do |format|
       if @crew.update(crew_params)
-        format.html { redirect_to @crew, notice: 'Crew was successfully updated.' }
+        format.html { redirect_to @crew, notice: 'Anmälan sparad.' }
         format.json { render :show, status: :ok, location: @crew }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class CrewsController < ApplicationController
   def destroy
     @crew.destroy
     respond_to do |format|
-      format.html { redirect_to crews_url, notice: 'Crew was successfully destroyed.' }
+      format.html { redirect_to crews_url, notice: 'Anmälan är slängd.' }
       format.json { head :no_content }
     end
   end
@@ -72,6 +72,6 @@ class CrewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crew_params
-      params[:crew].permit(:boat_id, :race_id, :point_id, :common_goal)
+      params[:crew].permit(:boat_id, :race_id, :point_id, :common_goal, :regattum_id)
     end
 end

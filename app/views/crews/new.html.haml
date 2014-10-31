@@ -1,5 +1,45 @@
 %h1 New crew
 
-= render 'form'
+.application-doc  
+  .application-section
+    .legend
+      %i
+        Arrangör
+    - if params[:organizer_id].blank?
+      .question
+        %ul
+          - for organizer in Organizer.all.order("name ASC") do
+            %li= link_to organizer.name, new_crew_path(:organizer_id => organizer.id)
+    - else
+      .content
+        - organizer = Organizer.find(params[:organizer_id])
+        = organizer.name
 
-= link_to 'Back', crews_path
+  .application-section{:id => "application-regatta"}
+    .legend
+      %i
+        Regatta
+    - if params[:regattum_id].blank?
+      .question
+        %ul
+          - for regattum in organizer.regattums.order("name ASC") do # TODO sort order by date
+            %li= link_to regattum.name, new_crew_path(:organizer_id => organizer.id, :regattum_id => regattum.id)
+    - else
+      .content
+        - regattum = Regattum.find(params[:regattum_id])
+        = regattum.name
+      
+  .application-section
+    .legend
+      %i
+        Segling
+    .question
+      - if params[:race_id].blank? && params[:regattum_id].present?
+        = semantic_form_for @crew do |f|
+          = f.inputs do   
+            = f.input :race, :as => :radio, :collection => regattum.races, :label => ""
+          = f.actions do
+            = f.action :submit, :as => :input
+        = link_to "Avbryt", :back 
+
+    

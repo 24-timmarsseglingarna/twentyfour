@@ -1,6 +1,6 @@
 class Point < ActiveRecord::Base
   include  ActionView::Helpers::OutputSafetyHelper
-  validates :number, uniqueness: true, length: {in: 1..4}, uniqueness: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :number, length: {in: 1..4}, uniqueness: true, numericality: { only_integer: true, greater_than: 0 }
   validates_length_of :name, :minimum => 2, :allow_blank => true
   has_and_belongs_to_many :organizers
   has_many :crews
@@ -14,7 +14,7 @@ class Point < ActiveRecord::Base
   end
   
   def number_name
-    raw(number + '&nbsp;' + name)
+    number + ' ' + name
   end
   
   def self.organizer_selection organizer_id

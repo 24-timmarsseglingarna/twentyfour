@@ -1,36 +1,39 @@
 %p#notice= notice
 
-.application-doc  
-  .application-section{:id => "application-regatta"}
-    Regatta:
-    - if @crew.race.blank?
-    - else 
-      Regatta:
-      %br
-      = @crew.race.regattum.organizer.name
-      %br
-      = @crew.race.regattum.name
-    .change
-      - link_to 'Ändra', edit_crew_path(@crew, :section => :race)      
-  
+.application-doc
   .application-section
-    Segling:
-    %div
-      - if @crew.race.blank?
+    .legend
+      %i
+        Arrangör
+    .content
+      = @crew.race.regattum.organizer.name unless @crew.race.blank?
+
+  .application-section{:id => "application-regatta"}
+    .legend
+      %i
+        Regatta
+    .content
+      = @crew.race.regattum.name unless @crew.race.blank?
+      
+  .application-section
+    .legend
+      %i
+        Segling
+    .content
+      Seglingsperiod: 
+      = @crew.race.period unless @crew.race.blank?
+      timmar
+      %br 
+      Start: 
+      = @crew.race.description unless @crew.race.blank?
+      - if @crew.race.regattum.races.count > 1
         .change
-          = link_to 'Välj', edit_crew_path(@crew, :section => :race) 
-      - else 
-        Seglingsperiod: 
-        = @crew.race.period
-        timmar
-        %br 
-        Start: 
-        = @crew.race.description
-        .change
-          = link_to 'Ändra', edit_crew_path(@crew, :section => :race)      
+          = link_to 'Ändra', edit_crew_path(@crew, :section => :race)                
 
   .application-section
-    Startplats:
+    .legend
+      %i
+        Startplats
     - unless @crew.race.blank?
       - if @crew.point.blank?
         %div
@@ -42,17 +45,18 @@
         .change
           = link_to 'Ändra', edit_crew_path(@crew, :section => :start)                
 
-
   .application-section
-    Målgång:
+    .legend
+      %i  
+        Målgång
     - unless @crew.race.blank?
       %div
       - unless @crew.race.blank?
         - if @crew.race.regattum.common_goal.blank?
-          Samma som startplatsen, #{@crew.point.number_name unless @crew.point.blank?}.
+          Samma som startplatsen#{raw(", " + @crew.point.number_name) unless @crew.point.blank?}.
         - else
           - if @crew.race.regattum.common_goal_only
-            Gemensam målgång, #{@crew.race.regattum.common_goal.number_name}).
+            Gemensam målgång, #{@crew.race.regattum.common_goal.number_name}.
           - else 
             - if @crew.common_goal
               Gemensam målgång, #{@crew.race.regattum.common_goal.number_name}.
@@ -62,13 +66,17 @@
               = link_to 'Ändra', edit_crew_path(@crew, :section => :goal)      
         
   .application-section
-    Båt:
+    .legend
+      %i
+        Båt
     -unless @crew.boat.blank?
-      %div
+      .content
         = @crew.boat.name
         %br
-        Entypsbåt:
+        Båttyp:
         = @crew.boat.boat_type
+        %br
+        (Entypsbåt med SRS-båtdatablad)
         %br
         Segelnummer:
         = @crew.boat.sail_number
@@ -100,10 +108,12 @@
 
   .application-section
     %p
-      Du kommer att kunna komplettera anmälan efter att du skickat in den.
+      Status på anmälan: Inte skickad.
+    %p
+      Du kan komplettera anmälan efter att du skickat in den.
     = button_to "Skicka in anmälan"
     %p
       = link_to "Släng anmälan"
-= link_to 'Edit', edit_crew_path(@crew)
-\|
-= link_to 'Back', crews_path
+
+
+= link_to 'Lista alla', crews_path

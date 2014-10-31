@@ -65,6 +65,7 @@ sv:
       regattum: "Regatta"
       race: "Segling"
       point: "Punkt"
+      crew: "Anmälan"
     errors:
       models:
         organizer:
@@ -89,6 +90,8 @@ sv:
         start_from: "Starta från"
         start_to: "Starta till"
         regattum: "Regatta"
+      crew:
+        common_goal: "Gemensam målgång"
       post:
         edit:
           title: "Edit title"

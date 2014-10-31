@@ -1,0 +1,10 @@
+.formtastic .choices-group {
+    width: 90%;
+    padding: 0px 0px 0px 10%;
+}
+
+.formtastic .actions {
+    padding-left: 0;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}

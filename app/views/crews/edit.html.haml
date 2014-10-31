@@ -1,6 +1,32 @@
 %h1 Editing crew
+.application-doc  
+  .application-section
+    .legend
+      %i
+        Arrangör
+    .content
+      = @crew.race.regattum.organizer.name unless @crew.race.blank?
 
-= render 'form'
+  .application-section{:id => "application-regatta"}
+    .legend
+      %i
+        Regatta
+    .content
+      = @crew.race.regattum.name unless @crew.race.blank?
+      
+  .application-section
+    .legend
+      %i
+        Segling
+    .content
+      Seglingsperiod: 
+      = @crew.race.period unless @crew.race.blank?
+      timmar
+      %br 
+      Start: 
+      = @crew.race.description unless @crew.race.blank?
+  
+  = render 'form'
 
 = link_to 'Show', @crew
 \|

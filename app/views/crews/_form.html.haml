@@ -1,17 +1,92 @@
-- @aa = Hash[Point.organizer_selection(3).map{|b| ["#{b.number} #{b.name}",b.id]}]
-= semantic_form_for @crew do |f|
-  = f.inputs do
-    - if params[:section] == "boat" || params[:section].blank?
-      = f.input :boat
-    - if params[:section] == "race" || params[:section].blank?      
-      = f.input :race, :as => :radio
-    - if params[:section] == "start" || params[:section].blank?
-      = #f.input :point, :collection => Point.order("number ASC").first(10)
-      
-      = #f.input :point, :collection => Hash[Point.all.first(10).map{|b| ["#{b.number} #{b.name}",b.id]}]
 
-      = f.input :point, :collection => @aa #Hash[Point.organizer_selection(3).map{|b| ["#{b.number} #{b.name}",b.id]}]
-    - if params[:section] == "goal" || params[:section].blank?  
-      = f.input :common_goal
-  = f.actions do
-    = f.action :submit, :as => :input
+- @aa = Hash[Point.organizer_selection(3).map{|b| ["#{b.number} #{b.name}",b.id]}]
+
+- if params[:section] == "race" #|| params[:section].blank?   
+  = semantic_form_for @crew do |f|
+    = f.inputs do   
+      = f.input :race, :as => :radio, :collection => @crew.race.regattum.races #TODO
+    = f.actions do
+      = f.action :submit, :as => :input
+  = link_to "Avbryt", @crew
+
+.application-section
+  .legend
+    %i
+      Startplats
+  - if params[:section] == "start" #|| params[:section].blank?
+    .question
+      = semantic_form_for @crew do |f|
+        = f.inputs do   
+          = f.input :point, :collection => @aa, :as => :radio, :label => ""        
+        = f.actions do
+          = f.action :submit, :as => :input
+      = link_to "Avbryt", @crew    
+  - else
+    - unless @crew.point.blank?
+      =@crew.point.number_name
+
+
+
+- if params[:section] == "goal" #|| params[:section].blank?  
+  .application-section
+    .legend
+      %i  
+        Målgång
+    .question
+      - if @crew.race.regattum.common_goal.blank?
+        Samma som startplatsen#{raw(", " + @crew.point.number_name) unless @crew.point.blank?}.
+      - else
+        - if @crew.race.regattum.common_goal_only
+          Gemensam målgång, #{@crew.race.regattum.common_goal.number_name}).
+        - else 
+          = semantic_form_for @crew do |f|
+            = f.inputs do   
+              = f.input :common_goal, :as => :radio, :collection => { "Vid start, #{@crew.point.number_name}" => false, "Gemensam, #{@crew.race.regattum.common_goal.number_name}" => true }, :label => ""            
+            = f.actions do
+              = f.action :submit, :as => :input
+          = link_to "Avbryt", @crew        
+        
+
+
+.application-section
+  .legend
+    %i
+      Båt:
+  - if params[:section] == "boat" || params[:section].blank?
+    .question
+      = semantic_form_for @crew do |f|
+        = f.inputs do   
+          = f.input :boat
+        = f.actions do
+          = f.action :submit, :as => :input
+      = link_to "Avbryt", @crew            
+  - else
+    -unless @crew.boat.blank?
+      .content
+        = @crew.boat.name
+        %br
+        Entypsbåt:
+        = @crew.boat.boat_type
+        %br
+        Segelnummer:
+        = @crew.boat.sail_number
+        
+.application-section
+  Besättning
+  %p
+    Befälhavare:
+    %br
+
+  %p
+    Gastar:
+    %ul
+
+
+                
+.application-section
+  Samling efter seglingen
+  %div
+    Inga anmälda till middagen.
+
+
+

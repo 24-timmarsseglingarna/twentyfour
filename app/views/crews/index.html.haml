@@ -5,9 +5,15 @@
     %th
     %th
     %th
-
+    %th
+    %th
+    %th
+    
   - @crews.each do |crew|
     %tr
+      %td= crew.boat.name unless crew.boat.blank?
+      %td= crew.race.regattum.name unless crew.race.blank?    
+      %td= crew.race.regattum.organizer.name unless crew.race.blank?
       %td= link_to 'Show', crew
       %td= link_to 'Edit', edit_crew_path(crew)
       %td= link_to 'Destroy', crew, :method => :delete, :data => { :confirm => 'Are you sure?' }
