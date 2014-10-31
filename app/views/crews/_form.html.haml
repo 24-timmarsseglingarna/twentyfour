@@ -1,5 +1,5 @@
 
-- @aa = Hash[Point.organizer_selection(3).map{|b| ["#{b.number} #{b.name}",b.id]}]
+- @aa = Hash[Point.organizer_selection(3).map{|b| ["#{b.number} #{b.name}",b.id]}] # TODO
 
 - if params[:section] == "race" #|| params[:section].blank?   
   = semantic_form_for @crew do |f|
@@ -27,7 +27,7 @@
 
 
 
-- if params[:section] == "goal" #|| params[:section].blank?  
+- if params[:section] == "goal" # TODO view if not editing
   .application-section
     .legend
       %i  
@@ -47,7 +47,6 @@
           = link_to "Avbryt", @crew        
         
 
-
 .application-section
   .legend
     %i
@@ -56,7 +55,7 @@
     .question
       = semantic_form_for @crew do |f|
         = f.inputs do   
-          = f.input :boat
+          = f.input :boat, :label => ""
         = f.actions do
           = f.action :submit, :as => :input
       = link_to "Avbryt", @crew            
@@ -70,19 +69,22 @@
         %br
         Segelnummer:
         = @crew.boat.sail_number
-        
-.application-section
-  Besättning
-  %p
-    Befälhavare:
-    %br
 
-  %p
-    Gastar:
-    %ul
+- if params[:section] == "members" # TODO view if not editing
+  .application-section
+    .legend
+      %i
+        Besättning
+    .question
+      = semantic_form_for @crew do |f|
+        = f.semantic_errors :state
+        = f.inputs do   
+          = f.input :persons, :include_blank => true
+        = f.actions do
+          = f.action :submit, :as => :input
+      = link_to "Avbryt", @crew  
 
-
-                
+            
 .application-section
   Samling efter seglingen
   %div

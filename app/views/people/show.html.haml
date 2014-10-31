@@ -8,13 +8,18 @@
   = @person.last_name
 %p
   %b Birthday:
-  = @person.birthday.to_date  
+  = @person.birthday
 %p
   %b Email:
   = @person.email
 %p
   %b Mobile:
   = @person.mobile
+%p
+  %b Crews:
+  %ul
+  - for crew in @person.crews
+    %li= crew.name
 
 
 = link_to 'Edit', edit_person_path(@person)

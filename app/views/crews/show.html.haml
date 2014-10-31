@@ -1,21 +1,21 @@
 %p#notice= notice
 
 .application-doc
-  .application-section
+  .application-section{:class => "#{'finished' if @crew.race.present?}"}
     .legend
       %i
         Arrangör
     .content
       = @crew.race.regattum.organizer.name unless @crew.race.blank?
 
-  .application-section{:id => "application-regatta"}
+  .application-section{:class => "#{'finished' if @crew.race.present?}"}
     .legend
       %i
         Regatta
     .content
       = @crew.race.regattum.name unless @crew.race.blank?
       
-  .application-section
+  .application-section{:class => "#{'finished' if @crew.race.present?}"}
     .legend
       %i
         Segling
@@ -30,7 +30,7 @@
         .change
           = link_to 'Ändra', edit_crew_path(@crew, :section => :race)                
 
-  .application-section
+  .application-section{:class => "#{'finished' if @crew.point.present?}"}
     .legend
       %i
         Startplats
@@ -45,7 +45,7 @@
         .change
           = link_to 'Ändra', edit_crew_path(@crew, :section => :start)                
 
-  .application-section
+  .application-section{:class => "#{'finished' if @crew.point.present?}"}
     .legend
       %i  
         Målgång
@@ -65,7 +65,7 @@
             .change
               = link_to 'Ändra', edit_crew_path(@crew, :section => :goal)      
         
-  .application-section
+  .application-section{:class => "#{'finished' if @crew.boat.present?}"}
     .legend
       %i
         Båt
@@ -83,28 +83,30 @@
     .change
       = link_to 'Ändra', edit_crew_path(@crew, :section => :boat)      
           
-  .application-section
-    Besättning
-    %p
-      Befälhavare:
-      %br
-      - person = @people.first
-      = link_to "#{person.first_name} #{person.last_name}, #{person.email}", person 
-    %p
-      Gastar:
+  .application-section{:class => "#{'finished' if @crew.persons.present?}"}
+    .legend
+      %i
+        Besättning
+    .content
       %ul
-        - for person in @people
+        - for person in @crew.persons
           %li
-            = link_to "#{person.first_name} #{person.last_name}, #{person.email}", person 
+            = person.name 
     .change
-      = link_to 'Ändra', edit_crew_path(@crew, :section => :crew)      
+      - if @crew.persons.count > 0 
+        = link_to 'Ändra', edit_crew_path(@crew, :section => :members)      
+      - else
+        = link_to 'Lägg till', edit_crew_path(@crew, :section => :members)      
                   
-  .application-section
-    Samling efter seglingen
-    %div
-      Inga anmälda till middagen.
+  .application-section{:class => "finished"}
+    .legend
+      %i Efterarrangemang
+    .content
+      %p
+        Samling i uthamnen Norrviken, Runmarö-Storön. Korvgrillning. Kom som du är.
+      %p
       .change
-        = link_to 'Ändra', edit_crew_path(@crew, :section => :gathering)      
+        Ingen anmälan
 
   .application-section
     %p
@@ -113,7 +115,7 @@
       Du kan komplettera anmälan efter att du skickat in den.
     = button_to "Skicka in anmälan"
     %p
-      = link_to "Släng anmälan"
+      = link_to 'Släng anmälan', @crew, :method => :delete, :data => { :confirm => 'Vill du slänga hela anmälan?' }
 
 
 = link_to 'Lista alla', crews_path

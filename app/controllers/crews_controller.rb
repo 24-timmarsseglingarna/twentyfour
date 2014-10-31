@@ -72,6 +72,6 @@ class CrewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crew_params
-      params[:crew].permit(:boat_id, :race_id, :point_id, :common_goal, :regattum_id)
+      params[:crew].permit(:boat_id, :race_id, :point_id, :common_goal, :regattum_id, :person_ids => [])
     end
 end

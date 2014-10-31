@@ -1,7 +1,8 @@
 %h1 New crew
 
 .application-doc  
-  .application-section
+  - # TODO First check if organizer exists, not only param
+  .application-section{:class => "#{'finished' if params[:organizer_id]}"}
     .legend
       %i
         Arrangör
@@ -15,7 +16,7 @@
         - organizer = Organizer.find(params[:organizer_id])
         = organizer.name
 
-  .application-section{:id => "application-regatta"}
+  .application-section{:class => "#{'finished' if params[:regattum_id]}"}
     .legend
       %i
         Regatta
@@ -29,7 +30,7 @@
         - regattum = Regattum.find(params[:regattum_id])
         = regattum.name
       
-  .application-section
+  .application-section{:class => "#{'finished' if @crew.race.present?}"}
     .legend
       %i
         Segling

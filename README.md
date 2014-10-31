@@ -25,8 +25,11 @@ Vilken båt?
 Har båten handikapp?
 Vilka ombord?
 Vem skeppare (ok byta inom besättningen)
-Har betalt?
+Har betalt? (betalning)
 Vilken segling (ok byta inom regattan)?
+Vimpel
+Efterarrangemang
+
 
 Utkast -> preliminär -> betald -> låst
 -> inställd

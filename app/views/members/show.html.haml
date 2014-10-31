@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Crew:
+  = @member.crew_id
+%p
+  %b Person:
+  = @member.person_id
+%p
+  %b Captain:
+  = @member.captain
+
+= link_to 'Edit', edit_member_path(@member)
+\|
+= link_to 'Back', members_path

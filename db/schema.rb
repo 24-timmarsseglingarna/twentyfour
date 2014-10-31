@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030183912) do
+ActiveRecord::Schema.define(version: 20141031141059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20141030183912) do
     t.boolean  "common_goal"
     t.integer  "regattum_id"
   end
+
+  create_table "members", force: true do |t|
+    t.integer  "crew_id"
+    t.integer  "person_id"
+    t.boolean  "captain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "members", ["person_id", "crew_id"], name: "index_members_on_person_id_and_crew_id", unique: true, using: :btree
 
   create_table "organizers", force: true do |t|
     t.string   "name"
