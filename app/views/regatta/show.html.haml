@@ -1,6 +1,5 @@
 #notice= notice
-
-=title "#{@regattum.name} < #{@regattum.organizer.name}"
+- title "#{@regattum.name} < #{@regattum.organizer.name}"
 
 .bread-crumb
   > 
@@ -10,6 +9,7 @@
   >
   = @regattum.name
 
+%h1= @regattum.name
 
 - unless @regattum.description.blank?
   %p

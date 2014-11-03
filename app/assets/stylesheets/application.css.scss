@@ -16,8 +16,13 @@
  *= require formtastic_changes
  *= require_tree .
  *= require_self
-
  */
+
+
+
+h1{
+  font-size: 1.25em;
+}
 
 .content {
   max-width: 320px;
