@@ -37,6 +37,11 @@ Utkast -> preliminär -> betald -> låst
 -> genomförd
   
 
+Regatta: utkast, kommande, pågående, genomförd, fryst, arkiverad
+
+Logga användaraktivitet (utveckling av anmälan, utveckling av en regatta, ...): https://github.com/pokonski/public_activity
+
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

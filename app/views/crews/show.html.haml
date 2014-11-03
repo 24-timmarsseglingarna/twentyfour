@@ -113,9 +113,11 @@
       Status på anmälan: Inte skickad.
     %p
       Du kan komplettera anmälan efter att du skickat in den.
-    = button_to "Skicka in anmälan"
+    = button_to "Skicka in anmälan", @crew, :method => :get
     %p
       = link_to 'Släng anmälan', @crew, :method => :delete, :data => { :confirm => 'Vill du slänga hela anmälan?' }
-
+    %p
+      Skapad: #{l(@crew.created_at)}
+      %br
 
 = link_to 'Lista alla', crews_path
