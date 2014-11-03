@@ -45,6 +45,7 @@
         .change
           = link_to 'Ändra', edit_crew_path(@crew, :section => :start)                
 
+  - # Fix when this section is flagged finished
   .application-section{:class => "#{'finished' if @crew.point.present?}"}
     .legend
       %i  

@@ -1,5 +1,7 @@
 #notice= notice
 
+=title "#{@regattum.name} < #{@regattum.organizer.name}"
+
 .bread-crumb
   > 
   = link_to "Arrangörer", organizers_path
@@ -34,6 +36,37 @@
         
   %p
     = link_to "Lägg till en segling", new_race_path(:regattum_id => @regattum.id)      
+
+
+%h2 Startlista
+- for race in @regattum.races
+  %h3= race.description + ' period: ' + race.period.to_s + ' timmar'
+  %ol.crews
+    - for crew in race.crews
+      %li.crew
+        .boat
+          .boat_name
+            = crew.boat.name unless crew.boat.blank?
+          .boat_data  
+            = crew.boat.boat_type unless crew.boat.blank?
+            = crew.boat.sail_number unless crew.boat.blank?
+            1,20
+        %ol.members
+          - for person in crew.persons 
+            %li #{person.first_name} #{person.last_name}
+        .administrative
+          .start_goal
+            = crew.point.number_name unless crew.point.blank?
+            \- 
+            = crew.goal.number_name unless crew.point.blank?
+          .created_at
+            = l crew.created_at
+          .status
+            Anmäld
+
+        
+
+
 
 %p
   = link_to "Redigera regattan #{@regattum.name}", edit_regattum_path(@regattum)

@@ -67,3 +67,23 @@
 .finished {
   background-color: #cfc;
 }
+
+li.crew {
+  background-color: lightyellow;
+}
+
+.crew .boat {
+  background-color: lightgreen;
+}
+.crew .boat_name {
+  float:  left;
+  background-color: lightblue;
+  padding-right: 1em;
+  width: 15em;
+}
+
+.crew .boat_data {
+ background-color: pink; 
+ width: 15em;
+ float: left;
+}
