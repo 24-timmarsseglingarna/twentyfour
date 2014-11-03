@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require normalize
+ *= require main
  *= require formtastic
  *= require formtastic_changes
  *= require_tree .
@@ -17,9 +19,18 @@
 
  */
 
+.content {
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .bread-crumb {
-  background-color: lightgray;
-  padding: 0.5em;
+  padding: 0.5em 0em;
+  line-height: 2em;
+  font-size: 0.75em;
+  border-bottom: solid 1px gray;
 }
 
 .cancel {
@@ -31,13 +42,7 @@
   text-align: right;
 }
 .application-doc {
-  margin: 1em;
-  width: 320px;
-  border-radius: 0.5em;
-  border-color: #ccc;
-  border-width: 2px;  
-  border-radius: 0.5em;
-  border-style: solid;
+
 }
 
 .application-doc h1 {
@@ -76,14 +81,10 @@ li.crew {
   background-color: lightgreen;
 }
 .crew .boat_name {
-  float:  left;
   background-color: lightblue;
-  padding-right: 1em;
-  width: 15em;
 }
 
 .crew .boat_data {
  background-color: pink; 
- width: 15em;
- float: left;
+
 }
